@@ -21,7 +21,34 @@
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-\IEEEPARstart{R}{ecent} advancements in drones have made brushless DC motors (BLDC motors) very inexpensive and lightweight. This has sparked vivid open source development of various motor drivers [\ref{odrive}] and mechanical support components [\ref{opentorque}]. By leveraging these tools we are aiming to build a lightweight 6-axis compliant robot manipulator. In the essence of time, only 3 axis' will be developed and dummy mass will be placed on the end. The following metrics define success for the device.
+\IEEEPARstart{B}{iologists} have been aiming to understand bird migration for decades. Various custom hardware has been developed for doing this \cite{BirdTracking}, however is it costly an requires capture and release of the bird. We are proposing the design, construction and deployment of a device that resides in a stationary location. This device is equip with a microphone and microcontroller, and by using machine learning \cite{ML1} \cite{ML2} can detect and speciate various types of birds. The device will also be able to record various types of environmental data for cross-correlation with bird density in post processing. After the successful implementation we desire to make a time series bird density heat map.
+
+\section{Machine Learning on the Edge}
+Machine learning and AI have been popular topics in the last couple of year, especially the use of neural nets in classification algorithms. It has not been until recently that these applications have moved into edge compute, meaning processing has to be run on the device, rather than the cloud. We propose to design a NN (Neural Network) that can be run on a STM32 microcontroller. This is a rapidly expanding field and there are various software implementations \cite{CMSIS}. 
+
+\section{Hardware}
+The hardware will need to be battery powered in order to collect data over extended periods of time. It should be inexpensive so it becomes feasible to deploy many devices and should be completely stand alone. In addition it should have a wiresless uplink/downlink to transmit data to and from a computer.
+
+\begin{thebibliography}{1}
+
+\bibitem{BirdTracking}
+Bird Tracking Hardware.
+\url{https://atstrack.com/animal-class/avian.aspx} [Accessed June 22, 2019]
+
+\bibitem{ML1}
+Stowell, Wood, Pamuła, Stylianou4, Glotin "Automatic acoustic detection of birds through deep learning: the first Bird Audio Detection challenge"
+\url{https://arxiv.org/pdf/1807.05812.pdf}
+
+\bibitem{ML2}
+Ilyas Potamitis, "Deep learning for detection of bird vocalisations"
+\url{https://arxiv.org/pdf/1609.08408.pdf}
+
+\bibitem{CMSIS}
+CMSIS NN Software Library
+https://www.keil.com/pack/doc/CMSIS/NN/html/index.html
+
+\end{thebibliography}
+\end{document}
 
 \begin{center}
 \begin{tabular}{ c|c } 
@@ -174,17 +201,13 @@ The team that prepared the Ariane 5 for its maiden launch failed at all three of
 
 % Bib
 \begin{thebibliography}{1}
-\bibitem{501}
-Prof. J. L. LIONS, "Flight 501 Failure", Report by the Inquiry Board
-Paris, 19 July 1996
+%\bibitem{501}
+%Prof. J. L. LIONS, "Flight 501 Failure", Report by the Inquiry Board
+%Paris, 19 July 1996
 
 \bibitem{SW}
 Robert L. Baber, "The Ariane 5 explosion as seen by a software engineer", Risks-18.89, 12 March 1997 
 \url{http://www.cas.mcmaster.ca/~baber/TechnicalReports/Ariane5/Ariane5.htm} [Accessed March 12, 2019]
 
-\bibitem{BURNS}
-A. Burns, A. Wellings. \textit{Real-Time Systems and Programming Languages}, Pearson Canada, 2009.
-
 \end{thebibliography}
-
 \end{document}

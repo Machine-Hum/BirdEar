@@ -21,13 +21,41 @@
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-\IEEEPARstart{B}{iologists} have been aiming to understand bird migration for decades. Various custom hardware has been developed for doing this \cite{BirdTracking}, however is it costly an requires capture and release of the bird. We are proposing the design, construction and deployment of a device that resides in a stationary location. This device is equip with a microphone and microcontroller, and by using machine learning \cite{ML1} \cite{ML2} can detect and speciate various types of birds. The device will also be able to record various types of environmental data for cross-correlation with bird density in post processing. After the successful implementation we desire to make a time series bird density heat map.
+\IEEEPARstart{B}{iologists} have been aiming to understand bird migration for decades. Various custom hardware has been developed for doing this \cite{BirdTracking}, however is it costly an requires capture and release of the bird. We are proposing the design, construction and deployment of a device that resides in a stationary location. This device is equip with a microphone and microcontroller, and by using machine learning techniques \cite{ML1} \cite{ML2} can detect and speciate various types of birds. In addition the device will also be able to record various types of environmental data for cross-correlation with bird density in post processing. Following the successful deployment we desire to make a bird density heat map of various regions and to undestand how it changes over time.
 
 \section{Machine Learning on the Edge}
-Machine learning and AI have been popular topics in the last couple of year, especially the use of neural nets in classification algorithms. It has not been until recently that these applications have moved into edge compute, meaning processing has to be run on the device, rather than the cloud. We propose to design a NN (Neural Network) that can be run on a STM32 microcontroller. This is a rapidly expanding field and there are various software implementations \cite{CMSIS}. 
+Machine learning and AI have been popular topics in the last couple of years, especially the use of neural nets in classification algorithms. It has not been until recently that these applications have moved into edge compute, meaning all the processing is run on the device as apposed to cloud. We propose to design a NN (Neural Network) that can be run on a STM32 microcontroller for classification of various birds. As this is such a rapidly expanding field there are various software implementations developed for embeded applications \cite{CMSIS} \cite{TF}. 
 
 \section{Hardware}
-The hardware will need to be battery powered in order to collect data over extended periods of time. It should be inexpensive so it becomes feasible to deploy many devices and should be completely stand alone. In addition it should have a wiresless uplink/downlink to transmit data to and from a computer.
+The hardware will need to be battery powered in order to collect data over extended periods of time. We are currently targeting the specifications below.
+
+\begin{center}
+\begin{tabular}{ c | c }
+Spec             & Metric\\ 
+\hline 
+Battery Life     & 1 week\\
+Compatable Birds & 10    \\
+Cost (QTD 100)   & $<\$30$  \\
+\end{tabular}
+\end{center}
+
+It should be inexpensive so it becomes feasible to deploy many devices and should be completely stand alone. In addition it should have a wiresless uplink/downlink to transmit data to and from a computer.
+
+\subsection{Microcontroller}
+In addition to having experience with the STM32 family of microcontrollers, TensorFlow Embedded \cite{TF} has extensive documentation for implementation on the STM32F746 \cite{STM}. This part has 1MB flash, 320k RAM and runs at 216Mhz. TensorFlow embedded is designed to run on 20k of flash, so we will have more than enough space for the NN and application code.
+
+\subsection{Microphone}
+The device will contain a microphone that will be used to record ambient noises. A suitable microphone has not yet been selected.
+
+\section{Software}
+%% Write something about software here.
+%%
+%%
+
+\section{Predicted Difficulties}
+%% Write something about Difficulties.
+%%
+%%
 
 \begin{thebibliography}{1}
 
@@ -47,7 +75,19 @@ Ilyas Potamitis, "Deep learning for detection of bird vocalisations"
 CMSIS NN Software Library
 https://www.keil.com/pack/doc/CMSIS/NN/html/index.html
 
+\bibitem{TF}
+TensorFlow Lite for Microcontrollers
+https://www.tensorflow.org/lite/microcontrollers/overview
+
+\bibitem{STM}
+ARM® Cortex®-M7 STM32F7 Microcontroller IC 32-Bit 216MHz 1MB (1M x 8) FLASH 100-LQFP (14x14)
+https://www.digikey.ca/product-detail/en/stmicroelectronics/STM32F746VGT6/497-15819-ND/5287178
+
+\bibitem{Bird}
+xeno-canto is a website dedicated to sharing bird sounds from all over the world.
+https://www.xeno-canto.org/
 \end{thebibliography}
+
 \end{document}
 
 \begin{center}

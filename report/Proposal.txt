@@ -8,6 +8,7 @@ mel-frequency cepstrum. In this case, MATLAB can be a simulating tool.
 - 
 - Define a concise and useful dataset in each stage (ex: before/after calculations and NN)
 - Every circumstance produces different noises; therefore, finding proper filters to samples could be a major problem.
+- Understanding Neural Network and how we can apply it to our project (Even if we are going to use third-party open source).
 
 6. Software
 MATLAB

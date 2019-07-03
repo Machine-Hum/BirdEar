@@ -110,6 +110,28 @@ In the project we are planning on using Matlab/Simulink for any filter design, C
 \subsection{Signal processing}
 This project is required to utilize several signal processing techniques. Some of these techniques could be included filters, discrete Fourier transforms, and so on. Filters are necessary to improve the quality of the bird calls and remove unwanted noises. In addition, in order to come up with digitized data from acoustic analog signals, other techniques could be applied such as Discrete wavelet transform or mel-frequency cepstrum. In this case, MATLAB can be used for simulation.
 
+\subsection{Mel Spaced Filter Bank}
+Human hearing sensitivity works in a very nonlinear way. For a human, there is a stark difference between a signal that is 50hz and a signal that is 150hz. However is it almost impossible to notice a difference between a a 10khz signal and a 11khz signal. The mel scale has been developed to represent this. It it shown in Equation \ref{mel-eq} and is plotted in Figure \ref{mel}. 
+
+\begin{equation}
+M(f) = 1125 \cdot log(1+\frac{f}{700})
+\label{mel-eq}
+\end{equation}
+
+\begin{figure}[h]
+\includegraphics[width=9cm]{mel.eps}
+\caption{The Mel Scale}
+\label{mel}
+\end{figure}
+
+To get more adequate feature extraction we are going to use a mel spaced filter bank. This effectively maximizes the features extracted as a function of the mel scale. The filter array is shown in Figure \ref{FA}. In this example we have implemented ten filters for visulizing purposes, however in practice we are going to implement over twenty.
+
+\begin{figure}[h]
+\includegraphics[width=9cm]{FA.eps}
+\caption{The Mel Scale}
+\label{FA}
+\end{figure}
+
 \section{Predicted Difficulties}
 We predict that it will be difficult to gather a a concise and useful dataset to train the neural network. However, there are sites that contain vast datasets \cite{Bird}. As every circumstance produces different audiable signals, finding proper filters to samples could be a major problem. Another major difficulty we predict is implementation of the  Neural Network and how we can apply it to our project, even as we are going to use a library, designing the neural structure for an embedded application might be challenging.
 

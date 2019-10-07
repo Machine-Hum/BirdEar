@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:birdEar-cache
-EELAYER 30 0
+EELAYER 26 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
@@ -20,7 +20,7 @@ U 1 1 5D8C2F06
 P 850 3700
 F 0 "MK1" H 980 3746 50  0000 L CNN
 F 1 "CMA-4544PF-W" H 980 3655 50  0000 L CNN
-F 2 "" V 850 3800 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" V 850 3800 50  0001 C CNN
 F 3 "~" V 850 3800 50  0001 C CNN
 	1    850  3700
 	1    0    0    -1  
@@ -33,6 +33,7 @@ F 0 "BT1" H 1318 1696 50  0000 L CNN
 F 1 "Battery_Cell" H 1318 1605 50  0000 L CNN
 F 2 "Battery:BatteryHolder_Keystone_1042_1x18650" V 1200 1660 50  0001 C CNN
 F 3 "~" V 1200 1660 50  0001 C CNN
+F 4 "1042P" H 1200 1600 50  0001 C CNN "Part Number"
 	1    1200 1600
 	1    0    0    -1  
 $EndComp
@@ -191,13 +192,13 @@ $EndComp
 $Comp
 L Amplifier_Operational:LM324 U1
 U 4 1 5D8C5409
-P 2900 7050
-F 0 "U1" H 2900 7417 50  0000 C CNN
-F 1 "LM324" H 2900 7326 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 7150 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 2950 7250 50  0001 C CNN
-F 4 "LM324DR" H 2900 7050 50  0001 C CNN "Part Number"
-	4    2900 7050
+P 2900 7200
+F 0 "U1" H 2900 7567 50  0000 C CNN
+F 1 "LM324" H 2900 7476 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 7300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 2950 7400 50  0001 C CNN
+F 4 "LM324DR" H 2900 7200 50  0001 C CNN "Part Number"
+	4    2900 7200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -211,8 +212,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 950 7350 50  0001 C CNN
 	5    900  7150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	800  7450 800  7500
 $Comp
 L power:GND #PWR03
 U 1 1 5D8C59B1
@@ -411,13 +410,13 @@ $Comp
 L Device:R_POT_TRIM_US RV2
 U 1 1 5D8D08F7
 P 3000 2300
-F 0 "RV2" V 3050 2450 50  0000 C CNN
+F 0 "RV2" V 2900 2150 50  0000 C CNN
 F 1 "1M" V 2900 2300 50  0000 C CNN
-F 2 "Potentiometer_SMD:Potentiometer_Bourns_3269W_Vertical" H 3000 2300 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Vishay_T73YP_Vertical" H 3000 2300 50  0001 C CNN
 F 3 "~" H 3000 2300 50  0001 C CNN
-F 4 "3269W-1-105GLF" V 3000 2300 50  0001 C CNN "Part Number"
+F 4 "3362P-1-105LF" V 3000 2300 50  0001 C CNN "Part Number"
 	1    3000 2300
-	0    1    1    0   
+	0    -1   1    0   
 $EndComp
 Wire Wire Line
 	2850 2300 2800 2300
@@ -439,9 +438,9 @@ U 1 1 5D8D3430
 P 2050 5050
 F 0 "RV1" V 2100 5200 50  0000 C CNN
 F 1 "1M" V 1950 5050 50  0000 C CNN
-F 2 "Potentiometer_SMD:Potentiometer_Bourns_3269W_Vertical" H 2050 5050 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Vishay_T73YP_Vertical" H 2050 5050 50  0001 C CNN
 F 3 "~" H 2050 5050 50  0001 C CNN
-F 4 "3269W-1-105GLF" V 2050 5050 50  0001 C CNN "Part Number"
+F 4 "3362P-1-105LF" V 2050 5050 50  0001 C CNN "Part Number"
 	1    2050 5050
 	1    0    0    1   
 $EndComp
@@ -501,35 +500,6 @@ Wire Wire Line
 	3600 3200 3850 3200
 Text Notes 6750 4450 0    197  ~ 39
 STM32
-$Comp
-L Device:C_Small C23
-U 1 1 5D985D1A
-P 1100 7650
-F 0 "C23" H 1200 7700 50  0000 L CNN
-F 1 "1uF" H 1192 7605 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 1100 7650 50  0001 C CNN
-F 3 "~" H 1100 7650 50  0001 C CNN
-	1    1100 7650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1100 7550 1100 7500
-Wire Wire Line
-	1100 7500 800  7500
-$Comp
-L power:GND #PWR032
-U 1 1 5D985D22
-P 1100 7750
-F 0 "#PWR032" H 1100 7500 50  0001 C CNN
-F 1 "GND" H 1105 7577 50  0000 C CNN
-F 2 "" H 1100 7750 50  0001 C CNN
-F 3 "" H 1100 7750 50  0001 C CNN
-	1    1100 7750
-	1    0    0    -1  
-$EndComp
-Connection ~ 800  7500
-Wire Wire Line
-	800  7500 800  7600
 Text Label 2000 3300 0    50   ~ 0
 Raw_Audio
 Text Label 2300 4700 0    50   ~ 0
@@ -540,7 +510,7 @@ U 1 1 5D99023B
 P 8800 3700
 F 0 "U4" H 9144 3746 50  0000 L CNN
 F 1 "Si7050-A20" H 9144 3655 50  0000 L CNN
-F 2 "Package_DFN_QFN:DFN-6-1EP_3x3mm_P1mm_EP1.65x2.55mm" H 8800 3300 50  0001 C CNN
+F 2 "Package_DFN_QFN:DFN-6-1EP_3x3mm_P1mm_EP1.5x2.4mm" H 8800 3300 50  0001 C CNN
 F 3 "https://www.silabs.com/documents/public/data-sheets/Si7050-1-3-4-5-A20.pdf" H 8600 4000 50  0001 C CNN
 	1    8800 3700
 	1    0    0    -1  
@@ -647,38 +617,8 @@ F 3 "" H 8800 4050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8800 4050 8800 4000
-$Comp
-L Switch:SW_Push_Dual SW?
-U 1 1 5D9F0852
-P 5400 5250
-AR Path="/5D8C399D/5D9F0852" Ref="SW?"  Part="1" 
-AR Path="/5D9F0852" Ref="SW2"  Part="1" 
-F 0 "SW2" H 5400 5535 50  0000 C CNN
-F 1 "SW_Push_Dual" H 5400 5444 50  0000 C CNN
-F 2 "" H 5400 5450 50  0001 C CNN
-F 3 "~" H 5400 5450 50  0001 C CNN
-	1    5400 5250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5200 5250 5100 5250
-Wire Wire Line
-	5100 5250 5100 5350
-Wire Wire Line
-	5100 5450 5200 5450
-Wire Wire Line
-	5600 5250 5700 5250
-Wire Wire Line
-	5700 5250 5700 5350
-Wire Wire Line
-	5700 5450 5600 5450
-Wire Wire Line
-	5700 5350 5900 5350
 Wire Wire Line
 	5900 5350 5900 5650
-Connection ~ 5700 5350
-Wire Wire Line
-	5700 5350 5700 5450
 $Comp
 L power:GND #PWR?
 U 1 1 5D9F0862
@@ -692,45 +632,10 @@ F 3 "" H 5900 5650 50  0001 C CNN
 	1    5900 5650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5100 5350 4900 5350
-Connection ~ 5100 5350
-Wire Wire Line
-	5100 5350 5100 5450
 Text Label 4900 5350 0    50   ~ 0
 PB1
-$Comp
-L Switch:SW_Push_Dual SW?
-U 1 1 5D9F086C
-P 6600 5250
-AR Path="/5D8C399D/5D9F086C" Ref="SW?"  Part="1" 
-AR Path="/5D9F086C" Ref="SW3"  Part="1" 
-F 0 "SW3" H 6600 5535 50  0000 C CNN
-F 1 "SW_Push_Dual" H 6600 5444 50  0000 C CNN
-F 2 "" H 6600 5450 50  0001 C CNN
-F 3 "~" H 6600 5450 50  0001 C CNN
-	1    6600 5250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6400 5250 6300 5250
-Wire Wire Line
-	6300 5250 6300 5350
-Wire Wire Line
-	6300 5450 6400 5450
-Wire Wire Line
-	6800 5250 6900 5250
-Wire Wire Line
-	6900 5250 6900 5350
-Wire Wire Line
-	6900 5450 6800 5450
-Wire Wire Line
-	6900 5350 7100 5350
 Wire Wire Line
 	7100 5350 7100 5650
-Connection ~ 6900 5350
-Wire Wire Line
-	6900 5350 6900 5450
 $Comp
 L power:GND #PWR?
 U 1 1 5D9F087C
@@ -744,11 +649,6 @@ F 3 "" H 7100 5650 50  0001 C CNN
 	1    7100 5650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6300 5350 6100 5350
-Connection ~ 6300 5350
-Wire Wire Line
-	6300 5350 6300 5450
 Text Label 6100 5350 0    50   ~ 0
 PB2
 Text Label 6150 3850 0    50   ~ 0
@@ -864,4 +764,87 @@ Wire Wire Line
 	1700 1350 2050 1350
 Text Notes 1450 750  0    50   ~ 0
 On Switch 
+$Comp
+L Switch:SW_Push SW2
+U 1 1 5D9A7F57
+P 5400 5350
+F 0 "SW2" H 5400 5635 50  0000 C CNN
+F 1 "KSA0A311 LFTR" H 5400 5544 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Tactile_Straight_KSA0Axx1LFTR" H 5400 5550 50  0001 C CNN
+F 3 "" H 5400 5550 50  0001 C CNN
+	1    5400 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW3
+U 1 1 5D9A8159
+P 6600 5350
+F 0 "SW3" H 6600 5635 50  0000 C CNN
+F 1 "KSA0A311 LFTR" H 6600 5544 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Tactile_Straight_KSA0Axx1LFTR" H 6600 5550 50  0001 C CNN
+F 3 "" H 6600 5550 50  0001 C CNN
+	1    6600 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 5350 5900 5350
+Wire Wire Line
+	4900 5350 5200 5350
+Wire Wire Line
+	6100 5350 6400 5350
+Wire Wire Line
+	6800 5350 7100 5350
+Wire Wire Line
+	800  7450 800  7600
+$Comp
+L Connector:Conn_01x03_Male J6
+U 1 1 5DBAAF06
+P 2900 7750
+F 0 "J6" V 3053 7890 50  0000 L CNN
+F 1 "Conn_01x03_Male" V 2962 7890 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2900 7750 50  0001 C CNN
+F 3 "~" H 2900 7750 50  0001 C CNN
+	1    2900 7750
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3000 7550 3000 7450
+Wire Wire Line
+	3000 7450 3300 7450
+Wire Wire Line
+	3300 7450 3300 7200
+Wire Wire Line
+	3300 7200 3200 7200
+Wire Wire Line
+	2800 7550 2500 7550
+Wire Wire Line
+	2500 7550 2500 7100
+Wire Wire Line
+	2500 7100 2600 7100
+Wire Wire Line
+	2600 7300 2600 7450
+Wire Wire Line
+	2600 7450 2900 7450
+Wire Wire Line
+	2900 7450 2900 7550
+Wire Wire Line
+	2650 6150 2500 6150
+Wire Wire Line
+	2500 6150 2500 6350
+Wire Wire Line
+	2650 6350 2500 6350
+Connection ~ 2500 6350
+Wire Wire Line
+	2500 6350 2500 6650
+$Comp
+L power:GND #PWR0105
+U 1 1 5DBC4ABE
+P 2500 6650
+F 0 "#PWR0105" H 2500 6400 50  0001 C CNN
+F 1 "GND" H 2505 6477 50  0000 C CNN
+F 2 "" H 2500 6650 50  0001 C CNN
+F 3 "" H 2500 6650 50  0001 C CNN
+	1    2500 6650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

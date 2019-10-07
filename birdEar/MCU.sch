@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:birdEar-cache
-EELAYER 30 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -26,7 +26,7 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	0    -1   1    0   
 $EndComp
 $Comp
-L birdEar-rescue:Micro_SD_Card_Det_Hirose_DM3AT-Connector J?
+L birdEar-rescue:Micro_SD_Card_Det_Hirose_DM3AT-Connector-birdEar-rescue J?
 U 1 1 5D8C50AB
 P 2250 6550
 AR Path="/5D8C50AB" Ref="J?"  Part="1" 
@@ -892,34 +892,6 @@ Wire Wire Line
 Wire Wire Line
 	2800 2450 2800 2200
 $Comp
-L Switch:SW_Push_Dual SW1
-U 1 1 5DAF0B9D
-P 2200 2100
-F 0 "SW1" H 2200 2385 50  0000 C CNN
-F 1 "SW_Push_Dual" H 2200 2294 50  0000 C CNN
-F 2 "" H 2200 2300 50  0001 C CNN
-F 3 "~" H 2200 2300 50  0001 C CNN
-	1    2200 2100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2400 2100 2500 2100
-Wire Wire Line
-	2500 2100 2500 2200
-Wire Wire Line
-	2500 2300 2400 2300
-Wire Wire Line
-	2500 2200 2800 2200
-Connection ~ 2500 2200
-Wire Wire Line
-	2500 2200 2500 2300
-Wire Wire Line
-	2000 2100 1900 2100
-Wire Wire Line
-	1900 2100 1900 2200
-Wire Wire Line
-	1900 2300 2000 2300
-$Comp
 L power:GND #PWR018
 U 1 1 5DB0AF39
 P 1750 2350
@@ -932,11 +904,6 @@ F 3 "" H 1750 2350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1750 2350 1750 2200
-Wire Wire Line
-	1750 2200 1900 2200
-Connection ~ 1900 2200
-Wire Wire Line
-	1900 2200 1900 2300
 $Comp
 L power:+3.3V #PWR021
 U 1 1 5DB16999
@@ -1045,7 +1012,7 @@ $EndComp
 Wire Wire Line
 	3650 2300 3650 2200
 Wire Wire Line
-	8000 2150 8000 2450
+	8100 2150 8100 2450
 $Comp
 L Device:LED D1
 U 1 1 5DC04E10
@@ -1163,21 +1130,111 @@ Text HLabel 5100 5300 3    50   Input ~ 0
 I2C_SCL
 Text HLabel 5200 5300 3    50   Input ~ 0
 I2C_SDA
-Text HLabel 8000 2150 1    50   Input ~ 0
-PB1
 Text HLabel 8100 2150 1    50   Input ~ 0
+PB1
+Text HLabel 8200 2150 1    50   Input ~ 0
 PB2
 Wire Wire Line
-	8100 2150 8100 2450
+	8200 2150 8200 2450
 $Comp
 L Switch:SW_Push SW4
 U 1 1 5DA7B1B6
-P 2200 1250
-F 0 "SW4" H 2200 1535 50  0000 C CNN
-F 1 "SW_Push" H 2200 1444 50  0000 C CNN
-F 2 "" H 2200 1450 50  0001 C CNN
-F 3 "~" H 2200 1450 50  0001 C CNN
-	1    2200 1250
+P 2200 2200
+F 0 "SW4" H 2200 2485 50  0000 C CNN
+F 1 "KSA0A311 LFTR" H 2200 2394 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Tactile_Straight_KSA0Axx1LFTR" H 2200 2400 50  0001 C CNN
+F 3 "~" H 2200 2400 50  0001 C CNN
+	1    2200 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2400 2200 2800 2200
+Wire Wire Line
+	1750 2200 2000 2200
+Wire Wire Line
+	7500 2450 7500 2150
+Wire Wire Line
+	7600 2450 7600 2150
+Text Label 7500 2150 1    50   ~ 0
+PF13
+Text Label 7600 2150 1    50   ~ 0
+PF14
+Wire Wire Line
+	10100 1450 9800 1450
+Wire Wire Line
+	10100 1550 9800 1550
+Text Label 9800 1450 2    50   ~ 0
+PF13
+Text Label 9800 1550 2    50   ~ 0
+PF14
+Wire Wire Line
+	7700 2450 7700 2150
+Text Label 7700 2150 1    50   ~ 0
+PF15
+Wire Wire Line
+	4500 2450 4500 2150
+Text Label 4500 2150 1    50   ~ 0
+PG0
+Wire Wire Line
+	10100 1650 9800 1650
+Text Label 9800 1650 2    50   ~ 0
+PF15
+Wire Wire Line
+	10100 1750 9800 1750
+Text Label 9800 1750 2    50   ~ 0
+PG0
+Wire Wire Line
+	4600 2450 4600 2150
+Text Label 4600 2150 1    50   ~ 0
+PG1
+Wire Wire Line
+	8600 2450 8600 2150
+Text Label 8600 2150 1    50   ~ 0
+PE7
+Wire Wire Line
+	10100 1850 9800 1850
+Text Label 9800 1850 2    50   ~ 0
+PG1
+Wire Wire Line
+	10100 1950 9800 1950
+Text Label 9800 1950 2    50   ~ 0
+PE7
+Wire Wire Line
+	8700 2450 8700 2150
+Text Label 8700 2150 1    50   ~ 0
+PE8
+Wire Wire Line
+	8800 2450 8800 2150
+Text Label 8800 2150 1    50   ~ 0
+PE9
+Wire Wire Line
+	10100 2050 9800 2050
+Text Label 9800 2050 2    50   ~ 0
+PE8
+$Comp
+L Connector:Conn_01x08_Male J5
+U 1 1 5DB1E831
+P 10300 1750
+F 0 "J5" H 10273 1723 50  0000 R CNN
+F 1 "Conn_01x08_Male" H 10273 1632 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 10300 1750 50  0001 C CNN
+F 3 "~" H 10300 1750 50  0001 C CNN
+	1    10300 1750
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	10100 2150 9800 2150
+Wire Wire Line
+	9800 2150 9800 2250
+$Comp
+L power:GND #PWR0104
+U 1 1 5DB6A181
+P 9800 2250
+F 0 "#PWR0104" H 9800 2000 50  0001 C CNN
+F 1 "GND" H 9805 2077 50  0000 C CNN
+F 2 "" H 9800 2250 50  0001 C CNN
+F 3 "" H 9800 2250 50  0001 C CNN
+	1    9800 2250
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

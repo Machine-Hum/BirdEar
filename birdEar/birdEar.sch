@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:birdEar-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
@@ -58,17 +58,6 @@ F 1 "AZ1117EH-3.3TRG1" H 2650 1501 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 2650 1600 50  0001 C CIN
 F 3 "https://www.diodes.com/assets/Datasheets/AZ1117.pdf" H 2650 1350 50  0001 C CNN
 	1    2650 1350
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR011
-U 1 1 5D8C40B1
-P 2650 1800
-F 0 "#PWR011" H 2650 1550 50  0001 C CNN
-F 1 "GND" H 2655 1627 50  0000 C CNN
-F 2 "" H 2650 1800 50  0001 C CNN
-F 3 "" H 2650 1800 50  0001 C CNN
-	1    2650 1800
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -175,18 +164,6 @@ F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2900 5050 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 3000 5150 50  0001 C CNN
 F 4 "LM324DR" H 2950 4950 50  0001 C CNN "Part Number"
 	2    2950 4950
-	1    0    0    -1  
-$EndComp
-$Comp
-L Amplifier_Operational:LM324 U1
-U 3 1 5D8C5364
-P 2950 6250
-F 0 "U1" H 2950 6617 50  0000 C CNN
-F 1 "LM324" H 2950 6526 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2900 6350 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 3000 6450 50  0001 C CNN
-F 4 "LM324DR" H 2950 6250 50  0001 C CNN "Part Number"
-	3    2950 6250
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -403,8 +380,6 @@ Wire Wire Line
 	3450 2500 3450 3200
 Wire Wire Line
 	3450 3200 3150 3200
-Wire Wire Line
-	3450 3200 3600 3200
 Connection ~ 3450 3200
 $Comp
 L Device:R_POT_TRIM_US RV2
@@ -428,8 +403,6 @@ Wire Wire Line
 	3000 2500 3450 2500
 Text Notes 2650 2700 0    50   ~ 0
 Gain: 0:10
-Text GLabel 3850 3200 2    50   Output ~ 0
-Audio
 Text GLabel 3700 4950 2    50   Output ~ 0
 Loud
 $Comp
@@ -472,16 +445,12 @@ F 3 "" H 2050 5350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2200 5050 2650 5050
-Text Label 3600 3200 0    50   ~ 0
-Audio
 Wire Wire Line
 	2300 4700 2300 4850
 Wire Wire Line
 	2300 4850 2650 4850
 Wire Wire Line
 	3250 4950 3600 4950
-Text Notes 2200 5350 0    50   ~ 0
-Comparator is to wake up the microcontroller.\nThis will help with power savings
 Text Notes 3050 6600 0    50   ~ 0
 Spares
 Wire Wire Line
@@ -491,13 +460,6 @@ Wire Wire Line
 Connection ~ 3600 4950
 Wire Wire Line
 	3600 4950 3700 4950
-Wire Wire Line
-	3600 3200 3600 3600
-Wire Wire Line
-	3600 3600 6450 3600
-Connection ~ 3600 3200
-Wire Wire Line
-	3600 3200 3850 3200
 Text Notes 6750 4450 0    197  ~ 39
 STM32
 Text Label 2000 3300 0    50   ~ 0
@@ -827,24 +789,131 @@ Wire Wire Line
 	2600 7450 2900 7450
 Wire Wire Line
 	2900 7450 2900 7550
-Wire Wire Line
-	2650 6150 2500 6150
-Wire Wire Line
-	2500 6150 2500 6350
-Wire Wire Line
-	2650 6350 2500 6350
-Connection ~ 2500 6350
-Wire Wire Line
-	2500 6350 2500 6650
 $Comp
-L power:GND #PWR0105
-U 1 1 5DBC4ABE
-P 2500 6650
-F 0 "#PWR0105" H 2500 6400 50  0001 C CNN
-F 1 "GND" H 2505 6477 50  0000 C CNN
-F 2 "" H 2500 6650 50  0001 C CNN
-F 3 "" H 2500 6650 50  0001 C CNN
-	1    2500 6650
+L Connector:Conn_01x02_Male J7
+U 1 1 5D9EC8ED
+P 3850 750
+F 0 "J7" V 3912 794 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 4003 794 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 3850 750 50  0001 C CNN
+F 3 "~" H 3850 750 50  0001 C CNN
+	1    3850 750 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3750 950  3750 1050
+Wire Wire Line
+	3850 1050 3850 950 
+Wire Wire Line
+	3750 1050 3800 1050
+$Comp
+L power:GND #PWR011
+U 1 1 5D8C40B1
+P 2650 1800
+F 0 "#PWR011" H 2650 1550 50  0001 C CNN
+F 1 "GND" H 2655 1627 50  0000 C CNN
+F 2 "" H 2650 1800 50  0001 C CNN
+F 3 "" H 2650 1800 50  0001 C CNN
+	1    2650 1800
 	1    0    0    -1  
 $EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 5D9F52EC
+P 3800 1100
+F 0 "#PWR0106" H 3800 850 50  0001 C CNN
+F 1 "GND" H 3805 927 50  0000 C CNN
+F 2 "" H 3800 1100 50  0001 C CNN
+F 3 "" H 3800 1100 50  0001 C CNN
+	1    3800 1100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 1100 3800 1050
+Connection ~ 3800 1050
+Wire Wire Line
+	3800 1050 3850 1050
+Wire Wire Line
+	3450 3200 3850 3200
+$Comp
+L Amplifier_Operational:LM324 U1
+U 3 1 5D8C5364
+P 4150 3100
+F 0 "U1" H 4150 3467 50  0000 C CNN
+F 1 "LM324" H 4150 3376 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 4100 3200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 4200 3300 50  0001 C CNN
+F 4 "LM324DR" H 4150 3100 50  0001 C CNN "Part Number"
+	3    4150 3100
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	3850 3000 3750 3000
+Wire Wire Line
+	3750 3000 3750 2800
+Wire Wire Line
+	3750 2800 4600 2800
+Wire Wire Line
+	4600 2800 4600 3100
+Wire Wire Line
+	4600 3100 4450 3100
+Connection ~ 4600 3100
+$Comp
+L Device:R_Small_US R15
+U 1 1 5DA13BF6
+P 5200 3100
+F 0 "R15" V 4995 3100 50  0000 C CNN
+F 1 "16k" V 5086 3100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" H 5200 3100 50  0001 C CNN
+F 3 "~" H 5200 3100 50  0001 C CNN
+	1    5200 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C_Small C23
+U 1 1 5DA147CB
+P 5450 3300
+F 0 "C23" H 5550 3350 50  0000 L CNN
+F 1 "1nF" H 5542 3255 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5450 3300 50  0001 C CNN
+F 3 "~" H 5450 3300 50  0001 C CNN
+	1    5450 3300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5300 3100 5450 3100
+Wire Wire Line
+	5450 3100 5450 3200
+Wire Wire Line
+	4600 3100 5100 3100
+Text Notes 4900 2800 0    39   ~ 0
+Anti Aliasing Filter, fo = 10khz
+Wire Notes Line
+	4850 3650 5900 3650
+Wire Notes Line
+	4850 2700 5900 2700
+$Comp
+L power:GND #PWR032
+U 1 1 5DA25816
+P 5450 3400
+F 0 "#PWR032" H 5450 3150 50  0001 C CNN
+F 1 "GND" H 5455 3227 50  0000 C CNN
+F 2 "" H 5450 3400 50  0001 C CNN
+F 3 "" H 5450 3400 50  0001 C CNN
+	1    5450 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 3100 6250 3100
+Wire Wire Line
+	6250 3100 6250 3600
+Wire Wire Line
+	6250 3600 6450 3600
+Connection ~ 5450 3100
+Wire Notes Line
+	4850 2700 4850 3650
+Wire Notes Line
+	5900 2700 5900 3650
+Text Notes 2200 5550 0    50   ~ 0
+Comparator is to wake up the \nmicrocontroller during a loud\nevent. This will help with \npower savings
 $EndSCHEMATC

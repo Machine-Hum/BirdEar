@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:birdEar-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -26,7 +26,7 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	0    -1   1    0   
 $EndComp
 $Comp
-L birdEar-rescue:Micro_SD_Card_Det_Hirose_DM3AT-Connector-birdEar-rescue J?
+L birdEar-rescue:Micro_SD_Card_Det_Hirose_DM3AT-Connector-birdEar-rescue-birdEar-rescue J?
 U 1 1 5D8C50AB
 P 2250 6550
 AR Path="/5D8C50AB" Ref="J?"  Part="1" 
@@ -832,17 +832,6 @@ Text Label 5600 1250 0    50   ~ 0
 SWCLK
 Text Label 4900 1250 2    50   ~ 0
 SW_RST
-$Comp
-L Connector_Generic:Conn_02x03_Counter_Clockwise J3
-U 1 1 5DA958CC
-P 5200 1250
-F 0 "J3" H 5250 1450 50  0000 C CNN
-F 1 "SWD" H 5250 1050 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 5200 1250 50  0001 C CNN
-F 3 "~" H 5200 1250 50  0001 C CNN
-	1    5200 1250
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5600 1150 5500 1150
 Wire Wire Line
@@ -1235,6 +1224,17 @@ F 1 "GND" H 9805 2077 50  0000 C CNN
 F 2 "" H 9800 2250 50  0001 C CNN
 F 3 "" H 9800 2250 50  0001 C CNN
 	1    9800 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even J3
+U 1 1 5DA504A4
+P 5200 1250
+F 0 "J3" H 5250 1567 50  0000 C CNN
+F 1 "Conn_02x03_Odd_Even" H 5250 1476 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 5200 1250 50  0001 C CNN
+F 3 "~" H 5200 1250 50  0001 C CNN
+	1    5200 1250
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

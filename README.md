@@ -1,11 +1,11 @@
 # FinalProject
 
 ## TODO: 
-  - Add some text to the board.
-  - (Other things I probably forgot)
-  - CHECK SD CARD CONNECTION.
   - Final gerber review.
   ------------------------------------------------------------------------------- 
+  - Add way to power w/o battery 
+  - CHECK SD CARD CONNECTION.
+  - Add some text to the board.
   - CHECK JTAG CONNECTION.
   - Add mainline power switch to schematic
   - Keystone 1042P (18650 Holder)
@@ -16,3 +16,4 @@
   - Gore membrain (Add to order)
   - Standoffs (Add to order)
   - Mounting hardware
+  - Parts for the logicRusher (Led, lightpipe and PB)

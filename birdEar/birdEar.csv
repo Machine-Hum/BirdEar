@@ -1,0 +1,35 @@
+Qty,Reference(s),Value,LibPart,Footprint,Part Number
+1,BT1,Battery_Cell,Device:Battery_Cell,Battery:BatteryHolder_Keystone_1042_1x18650,1042P
+21,"C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C20, C24, C25",1uF,Device:C_Small,Capacitor_SMD:C_0805_2012Metric,
+1,C19,2.2uF,Device:C_Small,Capacitor_SMD:C_0805_2012Metric,
+1,C21,4.7uF,Device:C_Small,Capacitor_SMD:C_0805_2012Metric,
+1,C22,100uF,Device:C_Small,Capacitor_SMD:C_0805_2012Metric,
+1,C23,1nF,Device:C_Small,Capacitor_SMD:C_0805_2012Metric,
+1,D1,LED GRN,Device:LED,LED_SMD:LED_0805_2012Metric,LTST-C171GKT
+1,D2,LED RED,Device:LED,LED_SMD:LED_0805_2012Metric,LTST-S220KRKT
+1,D3,LED BLU,Device:LED,LED_SMD:LED_0805_2012Metric,LTST-C171TBKT
+1,J1,Conn_01x03,Connector_Generic:Conn_01x03,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+1,J2,Micro_SD_Card_Det_Hirose_DM3AT,birdEar-rescue:Micro_SD_Card_Det_Hirose_DM3AT-Connector-birdEar-rescue-birdEar-rescue-birdEar-rescue,Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5,DM3AT-SF-PEJM5
+1,J3,Conn_02x03_Odd_Even,Connector_Generic:Conn_02x03_Odd_Even,Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical,
+2,"J4, J7",Conn_01x02_Male,Connector:Conn_01x02_Male,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,
+1,J5,Conn_01x08_Male,Connector:Conn_01x08_Male,Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical,
+1,J6,Conn_01x03_Male,Connector:Conn_01x03_Male,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+1,MK1,CMA-4544PF-W,Device:Microphone,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,CMA-4544PF-W
+1,R1,2.2k,Device:R_Small_US,Resistor_SMD:R_0805_2012Metric,
+4,"R2, R3, R13, R14",1M,Device:R_Small_US,Resistor_SMD:R_0805_2012Metric,
+1,R4,100k,Device:R_Small_US,Resistor_SMD:R_0805_2012Metric,
+5,"R5, R6, R7, R8, R9",47K,Device:R_Small_US,Resistor_SMD:R_0805_2012Metric,
+3,"R10, R11, R12",1K,Device:R_Small_US,Resistor_SMD:R_0805_2012Metric,
+1,R15,16k,Device:R_Small_US,Resistor_SMD:R_0805_2012Metric,
+2,"RV1, RV2",1M,Device:R_POT_TRIM_US,Potentiometer_THT:Potentiometer_Vishay_T73YP_Vertical,3362P-1-105LF
+3,"SW2, SW3, SW4",KSA0A311 LFTR,Switch:SW_Push,Button_Switch_THT:SW_Tactile_Straight_KSA0Axx1LFTR,KSA0A311 LFTR
+1,U1,LM324,Amplifier_Operational:LM324,Package_SO:SOIC-14_3.9x8.7mm_P1.27mm,LM324DR
+1,U2,AZ1117EH-3.3TRG1,Regulator_Linear:AZ1117-3.3,Package_TO_SOT_SMD:SOT-223-3_TabPin2,AZ1117EH-3.3TRG1
+1,U3,STM32F746ZGTx,MCU_ST_STM32F7:STM32F746ZGTx,Package_QFP:LQFP-144_20x20mm_P0.5mm,STM32F746ZGT6
+1,U4,SI7050-A20-IMR,Sensor_Temperature:Si7050-A20,Package_DFN_QFN:DFN-6-1EP_3x3mm_P1mm_EP1.5x2.4mm,Si7050-A20
+1,U5,LTR-303ALS-01,Sensor_Optical:LTR-303ALS-01,OptoDevice:Lite-On_LTR-303ALS-01,LTR-303ALS-01
+,,,,,
+,Enclosure,,,,CU-387
+,Standoffs,,,,R30-6700394
+,Standoffs (2),,,,CBMFTS205A
+,Vent,,,,VENT-PS1YBK-N8001

@@ -1,4 +1,5 @@
 # https://towardsdatascience.com/getting-started-on-deep-learning-for-audio-data-667d9aa76a33
+# https://www.tensorflow.org/lite/convert/python_api
 
 import numpy as np
 import pandas as pd 
@@ -6,6 +7,7 @@ import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 import seaborn as sns
+import tensorflow as tf
 from tqdm import tqdm
 
 from keras import Sequential
@@ -32,7 +34,6 @@ train = pd.read_json('../input/train.json')
 #   start_time_seconds_youtube_clip     int64
 #   vid_id                             object
 #   dtype: object
-
 
 print(train.shape)
 
@@ -62,3 +63,6 @@ from keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 reduce_lr = ReduceLROnPlateau(monitor='val_acc', factor=0.1, patience=2, verbose=1, min_lr=1e-8)
 early_stop = EarlyStopping(monitor='val_loss', verbose=1, patience=20,  restore_best_weights=True)
 history = model.fit(x_train, y_train,batch_size=512, epochs=16,validation_data=[x_val, y_val],verbose = 2,callbacks=[reduce_lr,early_stop])
+
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+tflite_model = converter.convert()

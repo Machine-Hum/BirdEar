@@ -1,15 +1,20 @@
 #!/bin/bash
-sudo apt install python3 
-sudo apt install python3-pip 
-sudo apt install python3-tk
 
-sudo pip3 install numpy
-sudo pip3 install pandas
-sudo pip3 install seaborn
-sudo pip3 install matplotlib
-sudo pip3 install tensorflow
-sudo pip3 install keras
-sudo pip3 install jupyter
-sudo pip3 install tqdm
-sudo pip3 install sklearn 
-sudo pip3 install tensorflow-gpu
+# wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
+# Install conda
+
+# sudo apt install python3 
+# sudo apt install python3-pip 
+# sudo apt install python3-tk
+
+pip install numpy
+pip install pandas
+pip install seaborn
+pip install matplotlib
+pip install tensorflow
+pip install keras
+pip install jupyter
+pip install tqdm
+pip install sklearn 
+# pip install tensorflow-gpu
+# pip install tf-nightly

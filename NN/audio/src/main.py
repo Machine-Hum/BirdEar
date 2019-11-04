@@ -42,20 +42,19 @@ y_train = np.asarray(ytrain)
 y_val = np.asarray(yval)
 
 model = tf.keras.Sequential()
-model.add(tf.keras.layers.BatchNormalization(momentum=0.98,input_shape=(10, 128)))
-model.add(tf.keras.layers.Bidirectional(tf.keras.layers.GRU(128, return_sequences = True)))
+model.add(tf.keras.layers.Dense(1,input_shape=(10, 128)))
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(1,activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer = tf.keras.optimizers.Nadam(lr=0.001), metrics=['accuracy'])
 print(model.summary())
-tf.keras.utils.plot_model(model, to_file='model.png')
+tf.keras.utils.plot_model(model, to_file='model.png', show_shapes=True)
 
 # fit on a portion of the training data, and validate on the rest
 # from keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 
 reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_acc', factor=0.1, patience=2, verbose=1, min_lr=1e-8)
 early_stop = tf.keras.callbacks.EarlyStopping(monitor='val_loss', verbose=1, patience=20,  restore_best_weights=True)
-history = model.fit(x_train, y_train,batch_size=512, epochs=16,validation_data=[x_val, y_val],verbose = 2,callbacks=[reduce_lr,early_stop])
+history = model.fit(x_train, y_train,batch_size=512, epochs=500,validation_data=[x_val, y_val],verbose = 2,callbacks=[reduce_lr,early_stop])
 
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 tflite_model = converter.convert()

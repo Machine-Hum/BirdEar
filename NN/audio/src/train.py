@@ -86,13 +86,13 @@ BATCH_SIZE = 400
 EPOCHS = 100
 
 # The EarlyStopping callback monitors training accuracy:
-# if it fails to improve for 20 consecutive epochs,
+# if it fails to improve for 10 consecutive epochs,
 # training stops early
 callbacks_list = [
     keras.callbacks.ModelCheckpoint(
         filepath='best_model.h5',
         monitor='val_loss', save_best_only=True),
-    keras.callbacks.EarlyStopping(monitor='acc',mode='auto', min_delta=0.01, patience=10) ]
+    keras.callbacks.EarlyStopping(monitor='acc',mode='auto', verbose=1, min_delta=0.01, patience=10) ]
 
 # Enable validation to use ModelCheckpoint and EarlyStopping callbacks.
 history = model.fit(x_train,

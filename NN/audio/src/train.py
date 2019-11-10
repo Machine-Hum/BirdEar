@@ -30,7 +30,7 @@ from keras import models
 from keras import optimizers
 from keras.models import Sequential
 from keras.preprocessing.sequence import pad_sequences
-from keras.layers import BatchNormalization, Bidirectional, LSTM, TimeDistributed
+from keras.layers import BatchNormalization, Bidirectional, LSTM, SimpleRNN
 from keras.layers import Dense, Dropout, Flatten, Reshape, GlobalAveragePooling1D
 from keras.layers import Conv1D, MaxPooling1D,GlobalMaxPooling1D
 from keras.utils import np_utils
@@ -57,7 +57,8 @@ model.add(Conv1D(64, 3, activation='relu', input_shape=(10, 128)))
 model.add(Conv1D(64, 3, activation='relu'))
 
 #model.add(LSTM(20, input_shape=(10, 1), return_sequences=True))
-model.add(Bidirectional(LSTM(20, return_sequences=True), input_shape=(10, 1)))
+#model.add(Bidirectional(LSTM(20, return_sequences=True), input_shape=(10, 1)))
+model.add(Bidirectional(SimpleRNN(100, return_sequences = True, activation="tanh")))
 #model.add(Bidirectional(CuDNNGRU(128, return_sequences = True)))
 
 model.add(Dropout(0.5))
@@ -69,7 +70,7 @@ model.add(Conv1D(100, 3, activation='relu'))
 model.add(GlobalAveragePooling1D())
 
 #model.add(Flatten())
-#model.add(TimeDistributed(Dense(1, activation='sigmoid')))
+#output layer
 model.add(Dense(1, activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])

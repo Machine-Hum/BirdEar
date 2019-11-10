@@ -13,7 +13,7 @@ from keras import models
 from keras import optimizers
 from keras.models import Sequential
 from keras.preprocessing.sequence import pad_sequences
-from keras.layers import BatchNormalization, Bidirectional, LSTM, TimeDistributed
+from keras.layers import BatchNormalization, Bidirectional, LSTM, SimpleRNN
 from keras.layers import Dense, Dropout, Flatten, Reshape, GlobalAveragePooling1D
 from keras.layers import Conv1D, MaxPooling1D,GlobalMaxPooling1D
 from keras.utils import np_utils
@@ -25,7 +25,8 @@ model = Sequential()
 model.add(Conv1D(64, 3, activation='relu', input_shape=(10, 128)))
 model.add(Conv1D(64, 3, activation='relu'))
 
-model.add(Bidirectional(LSTM(20, return_sequences=True), input_shape=(10, 1)))
+#model.add(Bidirectional(LSTM(20, return_sequences=True), input_shape=(10, 1)))
+model.add(Bidirectional(SimpleRNN(50, return_sequences = True, activation="tanh")))
 
 model.add(Dropout(0.5))
 model.add(MaxPooling1D(pool_size=2))

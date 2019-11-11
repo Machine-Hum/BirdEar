@@ -2,6 +2,7 @@
 
 Name='Carrion+crow' # Bird Name
 Page=1 # Start at the first page
+MaxPage=2
 
 wget "https://www.xeno-canto.org/explore?query=${Name}&pg=${Page}"
 
@@ -19,3 +20,5 @@ do
   echo $dl
   wget "https://www.xeno-canto.org${dl}"
 done
+
+cd ..

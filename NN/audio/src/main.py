@@ -14,7 +14,8 @@ from sklearn.model_selection import KFold, cross_val_score, train_test_split
 plt.style.use('fivethirtyeight')
 print(os.listdir("../input"))
 
-train = pd.read_json('../input/train.json')
+# train = pd.read_json('../input/train.json')
+train = pd.read_json('../../data/1py/data.json')
 
 # Train is a pandas dataframe of the format
 #   >>> train.dtypes
@@ -29,6 +30,20 @@ train = pd.read_json('../input/train.json')
 print(train.shape)
 
 train_train, train_val = train_test_split(train, random_state = 42) # Split into training set and validation set
+
+#xtrain = list()
+#ytrain = list()
+#xval   = list() 
+#yval   = list()
+#
+#for x in train_train:
+#  xtrain.append(train_train['data'][x]['fft'])
+#  ytrain.append(train_train['data'][x]['crow'])
+#
+#for x in train_val:
+#  xval.append(train_val['data'][x]['fft'])
+#  yval.append(train_val['data'][x]['crow'])
+
 xtrain = [k for k in train_train['audio_embedding']]
 ytrain = train_train['is_turkey'].values
 xval = [k for k in train_val['audio_embedding']]

@@ -7,6 +7,7 @@ import numpy as np
 import json
 
 folders = ['_crow', '_sandpiper']
+birds   = ['crow', '_sandpiper']
 
 folder = '1py/'
 wavfolder = 'waves/'

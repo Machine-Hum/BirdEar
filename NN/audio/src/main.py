@@ -16,14 +16,14 @@ plt.style.use('fivethirtyeight')
 print(os.listdir("../input"))
 
 # train = pd.read_json('../input/train.json')
-train = pd.read_json('../../data/1py/data.json')
+train = pd.read_json('../../data/data.json')
 
 train_train, train_val = train_test_split(train, random_state = 42) # Split into training set and validation set
 
 xtrain = [k for k in train_train['fft']]
-ytrain = train_train['crow'].values
+ytrain = (train_train['bird'].values == 'crow') & (train_train['isbird'].values)
 xval = [k for k in train_val['fft']]
-yval = train_val['crow'].values
+yval = (train_val['bird'].values == 'crow') & (train_val['isbird'].values) 
 
 # Pad the audio features so that all are "10 seconds" long
 
@@ -31,6 +31,8 @@ x_train = tf.keras.preprocessing.sequence.pad_sequences(xtrain)
 x_val = tf.keras.preprocessing.sequence.pad_sequences(xval)
 y_train = np.asarray(ytrain)
 y_val = np.asarray(yval)
+
+pdb.set_trace()
 
 model = tf.keras.Sequential()
 model.add(tf.keras.layers.Dense(1,input_shape=(128,)))

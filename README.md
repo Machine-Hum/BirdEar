@@ -1,6 +1,16 @@
 # FinalProject
 https://www.digikey.ca/short/pn872f
 
+## Repo Structure
+```bash
+├── birdEar   # Hardware directory
+├── NN        # Directory pertaining to the neural net
+├── README.md # This file
+├── refs      # Referance files
+├── report    # Report for the project
+└── src       # Source code for the firmware
+```
+
 ## TODO: 
   - Final gerber review.
   ------------------------------------------------------------------------------- 

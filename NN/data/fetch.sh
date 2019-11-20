@@ -1,8 +1,7 @@
 #!/bin/bash
 
-Name='Carrion+crow' # Bird Name
-Page=1 # Start at the first page
-MaxPage=2
+Name='sandpiper' # Bird Name
+Page=2 # Start at the first page
 
 wget "https://www.xeno-canto.org/explore?query=${Name}&pg=${Page}"
 
@@ -20,5 +19,7 @@ do
   echo $dl
   wget "https://www.xeno-canto.org${dl}"
 done
+
+rm out
 
 cd ..

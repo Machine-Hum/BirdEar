@@ -32,10 +32,13 @@ x_val = tf.keras.preprocessing.sequence.pad_sequences(xval)
 y_train = np.asarray(ytrain)
 y_val = np.asarray(yval)
 
-pdb.set_trace()
-
 model = tf.keras.Sequential()
-model.add(tf.keras.layers.Dense(1,input_shape=(128,)))
+# model.add(tf.keras.layers.Dense(1,input_shape=(128,)))
+x=len(xtrain)
+y=len(xtrain[0])
+z=len(xtrain[0][0])
+
+model.add(tf.keras.layers.Dense(1,input_shape=(y,z)))
 
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(1,activation='sigmoid'))

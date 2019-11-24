@@ -5,6 +5,12 @@ from scipy.io import wavfile as wav
 from scipy.fftpack import fft, fftfreq, fftshift
 import numpy as np
 import json
+import pdb
+from python_speech_features import mfcc
+from python_speech_features import delta
+from python_speech_features import logfbank
+from python_speech_features import ssc
+import librosa
 
 folders = ['crow', 'sandpiper']
 jsonFname = 'data.json'
@@ -21,20 +27,9 @@ for birds in range(0, len(folders)):
         data = data[:,0]                                # Remove one of the tracks (convert to mono)
       except:
         continue
-      X = fft(data)                                   # Take FFT
-      freqs = fftfreq(len(data)) * fs
-      freqs = freqs[0:int(len(freqs)/2)]
-      X = X[0:int(len(X)/2)]                          # Remove the negative bins
-      X = abs(X)                                      # Remove the j shit
-      spacing = int(len(X) / bins)                    # Requires spacing
-  
-      k = list()
-      for i in range(0,bins):
-        k.append(sum(X[i*spacing:(i+1)*spacing]))
-  
-      k = k/max(k)
-      k = k*256;
-      k = [int(i) for i in k]
+      
+      mfcc_feat = mfcc(data, fs, nfft=1103).tolist()
+      # fbank_feat = logfbank(data, fs)
   
       if "Not" in fname:
         isBird = False
@@ -42,7 +37,7 @@ for birds in range(0, len(folders)):
         isBird = True
   
       data = []
-      data = k
+      data = mfcc_feat
   
       root.append({
         'fname'    : fname,

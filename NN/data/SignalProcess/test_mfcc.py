@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import librosa
 import scipy.io.wavfile as wav
-from stft_mfcc import stft_mfcc
+from stft_mel import stft_mfcc
 
 """ call stft_mfcc() to execute pre_emphasis(), frame_sig(), fft_sig()
     then finally call mfcc() to get coefficients

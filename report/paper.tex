@@ -8,6 +8,8 @@
 \usepackage{pdfpages}
 \usetikzlibrary{positioning}
 \usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
 
 \lstset{
   basicstyle=\scriptsize, %or \small or \footnotesize etc. 
@@ -18,13 +20,6 @@
   aboveskip=1em,
   belowskip=1em
 }
-
-\begin{document}
-\title{Bird Density, with Edge ML}
-\author{Ryan Walker, Jin Seo}
-
-% make the title area
-\maketitle
 
 \tikzset{%
   every neuron/.style={
@@ -39,6 +34,54 @@
     execute at begin node=\color{black}$\vdots$
   },
 }
+
+\begin{document}
+\begin{center}
+\includegraphics[width=6cm]{img/bcit-logo.png} \\
+\huge{Bird Density, with Edge ML} \\
+\large{by} \\
+\large{Ryan Walker and Jin Seo} \\
+\vspace*{\fill}
+\large{\textbf{Bachelors of Technology in Electronics}} \\
+\large{Electrical and Computer Engineering Technology} \\
+\large{British Columbia Institute of Technology} \\
+\large{December - 2019} \\
+\end{center}
+\newpage
+\begin{center}
+\huge{Bird Density, with Edge ML} \\
+\large{by} \\
+
+\large{\textbf{Ryan Walker}} \\
+\large{Diploma in Robotics and Mechatronics, BCIT, 2011} \\
+ 
+\large{\textbf{Jin Seo}} \\
+\large{Jin put your degree here} \\
+\vfill
+\large{\textbf{Bachelors of Technology in Electronics}} \\
+\large{ELECTRICAL AND COMPUTER ENGINEERING TECHNOLOGY} \\
+
+\vfill
+\large{We accept this report at conforming to the required standard} \\
+\large{.............................................................} \\
+\large{.............................................................} \\
+\large{.............................................................} \\
+\large{.............................................................} \\
+
+
+\vspace*{\fill}
+\large{\textbf{Bachelors of Technology in Electronics}} \\
+\large{Electrical and Computer Engineering Technology} \\
+\large{British Columbia Institute of Technology} \\
+\large{December - 2019} \\
+\end{center}
+\newpage
+
+\tableofcontents
+\newpage
+
+\listoffigures
+\newpage
 
 \section{Introduction}
 Biologists have been aiming to understand bird migration for decades. Various custom hardware has been developed for doing this \cite{BirdTracking}, however is it costly an requires capture and release of the bird. We are proposing the design, construction and deployment of a device that resides in a stationary location. This device is equip with a microphone and microcontroller, and by using machine learning techniques \cite{ML1} \cite{ML2} can detect and speciate various types of birds. In addition the device will also be able to record various types of environmental data for cross-correlation with bird density in post processing. Following the successful deployment we desire to make a bird density heat map of various regions and to undestand how it changes over time.
@@ -109,7 +152,7 @@ To get more adequate feature extraction we are going to use a mel spaced filter 
 \begin{figure}[H]
 \centering
 \includegraphics[width=9cm]{FA.eps}
-\caption{The Mel Scale}
+\caption{The Mel Space Frequency Array}
 \label{FA}
 \end{figure}
 

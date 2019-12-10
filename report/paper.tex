@@ -161,6 +161,37 @@ Our neural network is deigned to accepts frequency data, not sound data. So ther
 \lstinputlisting[language=python]{../NN/data/fft.py}
 
 \section{The Neural Network}
+\subsection{Background and Exsisting work}
+The idea of Artificial Neural Networks comes from the structure and functions of a human brain. Neurons in human brain that process and transmit information between themselves.
+\begin{figure}[H]
+\includegraphics[scale=0.65]{./NN_general.png}
+\centering
+\caption{Forward\&Backward Neural Network}
+\end{figure}
+
+\subsubsection{Perceptron}
+People used perceptron to model of decision-making. Perceptron works like step function. So, if perceptron is over a certain threshold, it outputs 1 otherwise 0.
+Perceptrons act as a linear decision; however, many reality functions are NOT linear.
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{percept.png}
+    \caption{equation of perceptron.}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{percept2.png}
+    \caption{linearity of perceptron.\protect\cite{Percept}}
+  \end{minipage}
+\end{figure}
+
+\subsubsection{Sigmoid}
+Sigmoid neuron has weights for each input w1,w2,\dots , and overall bias b. 
+It’s $\sigma{(w \cdot x+b)}$ which is called the sigmoid function
+So, the sigmoid can be expressed as:
+
+$\sigma{(z)} =\frac{1}{1+\exp(-z)} \dots (3)$
+
 We chose Tensorflow for out neural network design because one you train up a model, you have the ability to convert it to a ``tflite" model which can be run on a microcontroller using tensorflow lite. We then built the model structure and trained the model. Our current model is shown in Figure \ref{model}, it has 128 input neurons on the input layer (for our 128 fft bins) 128 neurons on the one hidden layer and 1 neuron on the out (either crow or not crow). The script starts by randomly splitting our dataset into the training and validation set, where the training set it used for the training while the validation set is used for validation after the training is complete, that is to say the network has no knowledge of the validation set when adjusting the weights. After this process our network got \textbf{93\% accuracy on the validation set}
 \lstinputlisting[language=python]{../NN/audio/src/main.py}
 
@@ -242,6 +273,14 @@ https://www.xeno-canto.org/
 \bibitem{BirdCallIdentifier}
 Bird Call Identifier.
 \url{https://web.wpi.edu/Pubs/E-project/Available/E-project-042910-001603/unrestricted/Bird_Call_Identification_MQP_2010.pdf} [Accessed April 29, 2010]
+
+\bibitem{Percept}
+Calculate the Decision Boundary of a Single Perceptron
+https://medium.com/@thomascountz/calculate-the-decision-boundary-of-a-single-perceptron-visualizing-linear-separability-c4d77099ef38
+
+\bibitem{NN}
+Neural Networks and Deep Learning
+http://neuralnetworksanddeeplearning.com/index.html [Accessed Determination Press, June, 2019]
 
 \end{thebibliography}
 

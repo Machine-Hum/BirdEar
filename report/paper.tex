@@ -213,7 +213,7 @@ The idea of Artificial Neural Networks comes from the structure and functions of
 \end{figure}
 
 \subsubsection{Perceptron}
-People used perceptron to model of decision-making. Perceptron works like step function. So, if perceptron is over a certain threshold, it outputs 1 otherwise 0.
+Perceptron that functions as a step function was used to model of decision-making.Thus, if perceptron is over a certain threshold, it outputs 1 otherwise 0.
 Perceptrons act as a linear decision; however, many reality functions are NOT linear.
 \begin{figure}[H]
   \centering
@@ -222,7 +222,7 @@ Perceptrons act as a linear decision; however, many reality functions are NOT li
     \caption{equation of perceptron.}
   \end{minipage}
   \hfill
-  \begin{minipage}[b]{0.4\textwidth}
+  \begin{minipage}[b]{0.5\textwidth}
     \includegraphics[width=\textwidth]{img/percept2.png}
     \caption{linearity of perceptron.\protect\cite{Percept}}
   \end{minipage}
@@ -233,9 +233,192 @@ Sigmoid neuron has weights for each input w1,w2,\dots , and overall bias b.
 It’s $\sigma{(w \cdot x+b)}$ which is called the sigmoid function
 So, the sigmoid can be expressed as:
 
-$\sigma{(z)} =\frac{1}{1+\exp(-z)} \dots (3)$
+$\sigma{(z)} =\frac{1}{1+\exp(-z)} \dots (3)$ 
+, $a =\frac{1}{1+\sum_{-j}\exp(-w_jx_j-b)} \dots  (4) $
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{img/sig_eqn.png}
+\caption{Activated output neurons with sigmoid.\protect\cite{DL}}
+\label{sig}
+\end{figure}
+
+The Neural network could have multiple layers, so in that case, input of the sigmoid function could be the output of a neuron from previous layer. As shown in figure \ref{sig} Different combinations of the activated output neurons fire different neurons in the next layer.
+
+\subsubsection{Learning with Gradient descent}
+
+\includegraphics[scale=0.8]{img/gradient.png}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{img/gradient1.png}
+    \caption{Cost function.}
+    \label{cost}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{img/gradient2.png}
+    \caption{Gradient descent}
+  \end{minipage}
+\end{figure}
+As shown in the figure \ref{cost},the cost is differences between the expected output and the actual outcome from a neuron . Our goal is to find a weights and biases that minimize the cost. This is known as gradient descent.Gradient ,in mathematics, means the direction of steepest increase. In other words, find a local minimum by training NN.
+
+$a^l =\sigma{(wa^{l-1}+b)} \dots (22)$ ,
+$z^l_k =\sum_{j}-w^l_{kj}a^{l-1}+b^l_k \dots  (23) $\\
+Where $a^l$ is the vector of activations of neuron in the next layer, $a^{l-1}$ is the vector of activations of previous layer of neurons. z is weighted input.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{img/forward.png}
+\caption{Forward propagatoin.}
+\label{forward}
+\end{figure} 
+Unfortunately, when the number of training inputs is very large this can take a long time and learning thus occurs slowly. So, stochastic gradient descent can be used to speed up learning. The idea is to estimate the gradient C by computing $C_x$ for a small sample of randomly chosen training inputs\protect\cite{NN}Ch2.
+
+\subsubsection{Backward Propagation}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.8\textwidth}
+    \includegraphics[width=\textwidth]{img/backprop.png}
+    \caption{Backward propagation.\protect\cite{DL}}
+    \label{back}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{img/backprop2.png}
+    \caption{Diagram of Backward propagation.\protect\cite{BK}}
+    \label{back2}
+  \end{minipage}
+\end{figure}
+
+The forward propagation doesn’t give us the best result. As mentioned before, we want to find a set of weights and biases to minimize the cost by computing gradient ,and this algorithm is known as the backward propagation.
+As shown the figures \ref{back} and \ref{back2}, partial derivative and chain rule drive the network backward.
+
+\subsubsection{Cross-entropy Cost function}
+As shown in the sigmoid \ref{sig}, if the neuron's output get close to 1, the curve gets flat, so $\sigma^{'}(z)$ get very small (slow down).
+Cross-entropy avoids the problem of slowdown by vanishing the term $\sigma^{'}(z)$
+
+\includegraphics[scale=0.8]{img/cross.png}, 
+\includegraphics[scale=0.6]{img/cross1.png}
+
+the term $\sigma^{'}(z)$ disappears in the equation (61) after derivative of the cost with respect to weight.
+
+\subsubsection{Training,Validation,and Early stopping}
+In training process, separate training and validating data so as to evaluate NN model. In a training process, we define the number of epochs that iterates forward and backward propagation. Perhaps people think of increasing the number of epochs leads us to achieve the better result. However, there is a problem called over fitting. Over fitting (Over training) is a situation where the cost of training data decreases but the accuracy of validating data gets saturated.
+Once the classification accuracy on the validation data has saturated, we stop training (Early stopping).
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{img/over.png}
+    \caption{Decreasement of cost as epochs increases in training data.\protect\cite{NN}}
+    \label{over}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{img/over1.png}
+    \caption{Saturation of accuracy in validating data.\protect\cite{NN}}
+    \label{over1}
+  \end{minipage}
+\end{figure}
+
+To avoid overfitting. Then save the hyper-parameters (\# of epochs, learning rate,...). The learning rate is how fast the network learns; however, the network learning fast could cause over-shooting in the gradient descent.
+Repeating training by modifying the NN model and parameters until getting good accuracy.
+
+\subsubsection{Other NN model - Convolutional NN}
+another type of NN called Convolutional NN. $a^l=\sigma{(a^{l-1}*w+b)}$and $\ast$ is called a convolution operation.
+
+\includegraphics[scale=0.8]{img/con_eqn.png}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.6\textwidth}
+    \includegraphics[width=\textwidth]{img/convol.png}
+    \caption{Break down maps and features in CNN.\protect\cite{CON}}
+    \label{over}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.6\textwidth}
+    \includegraphics[width=\textwidth]{img/convol1.png}
+    \caption{Parameters reducing by CNN.\protect\cite{CON}}
+    \label{over1}
+  \end{minipage}
+\end{figure}
+
+As you see in the figure \ref{over1}, the outcome of filtering is compressed by the filtering steps. In other words each element doesn’t have own weights and biases, they share weights and biases!.
+
+Filtering steps {\protect\cite{CON}}:
+\begin{itemize}
+\item Line up the feature and map
+\item Multiply each element of map by corresponding feature element
+\item Add them up
+\item Divide by the total number of elements in the feature
+\end{itemize}
+A big advantage of sharing weights and biases is that it greatly reduces the number of parameters involved in a convolutional network.
+What is good about reducing the number of parameters? First,it speeds up the computation. Second,it gives us better accuracy.An example of using image pixels has been used to explain CNN.
+What’s about our case? Our input getting into the NN is MFCC(Mel Frequency Cepstral Coefficients). As we visualize the data of MFCC, it does not look quite different from the image data!.A spectrogram is a visual representation of the spectrum of frequencies of a signal as it varies with time. 
+
+\begin{figure}[H]
+\includegraphics[scale=0.25]{img/MFCC.png}
+\caption{MFCC \protect\cite{AU}}
+\label{mfcc}
+\end{figure}
+
+\subsubsection{Max-pooling}
+In max pooling, a pooling unit simply outputs the maximum activation in the N×N input region.
+Pooling steps {\protect\cite{CON}}:
+\begin{itemize}
+\item Pick window size( 2 or 3)
+\item Pick stride size (usually 2)
+\item Walk the window across the filtered outputs (CNN)
+\item From each window, take the maximum value
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.6\textwidth}
+    \includegraphics[width=\textwidth]{img/max.png}
+    \caption{Max-pooling.\protect\cite{CON}}
+    \label{max}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.6\textwidth}
+    \includegraphics[width=\textwidth]{img/max1.png}
+    \caption{Model of CNN and Max-pooling.\protect\cite{DL}}
+    \label{max1}
+  \end{minipage}
+\end{figure}
+
+\hfill \break A big benefit is that this helps reduce the number of parameters needed in later layers as shown in the figure \ref{max},
+
+\subsubsection{Other activation function - Rectified Linear Units (ReLU)}
+The concept and example of Neural Network that we have dealt with so far use the one activation function which is the sigmoid. There are different type of activation functions and one of those is Rectified Linear Units.
+\begin{figure}[H]
+\includegraphics[scale=0.8]{img/relu.png}
+\caption{ReLu \protect\cite{CON}}
+\label{rele}
+\end{figure}
+\hfill \break ReLu nomalizes the output of NN by tweaking each of values just a bit ex) change every negative values to zero \cite{DL}.
+People found that networks based on rectified linear units consistently outperformed than networks based on sigmoid activation functions.However,it has shown that ReLu is empirically better( Not mathematically proved).
+
+\subsection{Put all together}
+
+\begin{figure}[H]
+\includegraphics[scale=0.7]{img/all.png}
+\caption{Model of Birdear}
+\label{mod}
+\end{figure}
+As shown in the figure \ref{mod}, the signal of bird chirpping goes into our the signal process. It ends up composing the MFCC, which is the input of NN. In the end, the NN distingusih what kind of bird is.
+
+\subsection{Software Appication(PC) and Experiments}
 We chose Tensorflow for out neural network design because one you train up a model, you have the ability to convert it to a ``tflite" model which can be run on a microcontroller using tensorflow lite. We then built the model structure and trained the model. Our current model is shown in Figure \ref{model}, it has 128 input neurons on the input layer (for our 128 fft bins) 128 neurons on the one hidden layer and 1 neuron on the out (either crow or not crow). The script starts by randomly splitting our dataset into the training and validation set, where the training set it used for the training while the validation set is used for validation after the training is complete, that is to say the network has no knowledge of the validation set when adjusting the weights. After this process our network got \textbf{93\% accuracy on the validation set}
+
+\subsubsection{Testing codes(Python)}
+Following codes represent NN model that has a couple of CNN and a Max-pooling:
+\lstinputlisting[language=python]{../NN/audio/src/train.py}
+\hfill \break
+Another simple NN:
 \lstinputlisting[language=python]{../NN/audio/src/main.py}
 
 \begin{figure}[H]
@@ -318,12 +501,42 @@ Bird Call Identifier.
 \url{https://web.wpi.edu/Pubs/E-project/Available/E-project-042910-001603/unrestricted/Bird_Call_Identification_MQP_2010.pdf} [Accessed April 29, 2010]
 
 \bibitem{Percept}
-Calculate the Decision Boundary of a Single Perceptron
-https://medium.com/@thomascountz/calculate-the-decision-boundary-of-a-single-perceptron-visualizing-linear-separability-c4d77099ef38
+Calculate the Decision Boundary of a Single Perceptron,
+Tomas Countz,
+\url{https://medium.com/@thomascountz/calculate-the-decision-boundary-of-a-single-perceptron-visualizing-linear-separability-c4d77099ef38}, Apri 2018
 
 \bibitem{NN}
-Neural Networks and Deep Learning
-http://neuralnetworksanddeeplearning.com/index.html [Accessed Determination Press, June, 2019]
+Neural Networks and Deep Learning,
+Michael Nielsen,
+\url{http://neuralnetworksanddeeplearning.com/index.html} [Accessed Determination Press, June, 2019]
+
+\bibitem{DL}
+Deep learning,
+\url{https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=1},
+2017
+
+\bibitem{BK}
+A beginner’s guide to deriving and implementing backpropagation,
+Pranav Budhwant,
+\url{https://medium.com/binaryandmore/beginners-guide-to-deriving-and-implementing-backpropagation-e3c1a5a1e536}
+
+\bibitem{CON}
+How Convolutional Neural Networks work,
+Brandon Rohrer,
+\url{https://www.youtube.com/watch?v=FmpDIaiMIeA&t=243s},
+2016
+
+\bibitem{AU}
+Speech Processing for Machine Learning: Filter banks, Mel-Frequency Cepstral Coefficients (MFCCs) and What's In-Between,
+Haytham Fayek,
+\url{https://haythamfayek.com/2016/04/21/speech-processing-for-machine-learning.html},
+April, 2016
+
+\bibitem{MF}
+Mel Frequency Cepstral Coefficient (MFCC) tutorial,
+James Lyons,
+\url{http://practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/},
+
 
 \end{thebibliography}
 

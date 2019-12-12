@@ -55,8 +55,8 @@
 \large{\textbf{Ryan Walker}} \\
 \large{Diploma in Robotics and Mechatronics, BCIT, 2011} \\
  
-\large{\textbf{Jin Seo}} \\
-\large{Jin put your degree here} \\
+\large{\textbf{Jin Won Seo}} \\
+\large{Diploma of Computer Control in ECET, BCIT, 2011} \\
 \vfill
 \large{\textbf{Bachelors of Technology in Electronics}} \\
 \large{ELECTRICAL AND COMPUTER ENGINEERING TECHNOLOGY} \\
@@ -217,7 +217,7 @@ Perceptron that functions as a step function was used to model of decision-makin
 Perceptrons act as a linear decision; however, many reality functions are NOT linear.
 \begin{figure}[H]
   \centering
-  \begin{minipage}[b]{0.4\textwidth}
+  \begin{minipage}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{img/percept.png}
     \caption{equation of perceptron.}
   \end{minipage}
@@ -234,7 +234,7 @@ It’s $\sigma{(w \cdot x+b)}$ which is called the sigmoid function
 So, the sigmoid can be expressed as:
 
 $\sigma{(z)} =\frac{1}{1+\exp(-z)} \dots (3)$ 
-, $a =\frac{1}{1+\sum_{-j}\exp(-w_jx_j-b)} \dots  (4) $
+, $a =\frac{1}{1+\sum_{-j}\exp(-w_jx_j-b)} \dots  (4)\cite{NN}$
 
 \begin{figure}[H]
 \centering
@@ -263,9 +263,8 @@ The Neural network could have multiple layers, so in that case, input of the sig
   \end{minipage}
 \end{figure}
 As shown in the figure \ref{cost},the cost is differences between the expected output and the actual outcome from a neuron . Our goal is to find a weights and biases that minimize the cost. This is known as gradient descent.Gradient ,in mathematics, means the direction of steepest increase. In other words, find a local minimum by training NN.
-
-$a^l =\sigma{(wa^{l-1}+b)} \dots (22)$ ,
-$z^l_k =\sum_{j}-w^l_{kj}a^{l-1}+b^l_k \dots  (23) $\\
+$\\a^l =\sigma{(wa^{l-1}+b)} \dots (22)\cite{NN} ,\\
+z^l_k =\sum_{j}-w^l_{kj}a^{l-1}+b^l_k \dots  (23)\cite{NN}\\$
 Where $a^l$ is the vector of activations of neuron in the next layer, $a^{l-1}$ is the vector of activations of previous layer of neurons. z is weighted input.
 
 \begin{figure}[H]
@@ -295,6 +294,13 @@ Unfortunately, when the number of training inputs is very large this can take a 
 
 The forward propagation doesn’t give us the best result. As mentioned before, we want to find a set of weights and biases to minimize the cost by computing gradient ,and this algorithm is known as the backward propagation.
 As shown the figures \ref{back} and \ref{back2}, partial derivative and chain rule drive the network backward.
+Small changes of weights change the cost; therefore, the chain rule can be applied to explain this phenomenon.
+$\frac{\partial C_0}{\partial w^L} = \frac{\partial z^L}{\partial w^L}\frac{\partial a^L}{\partial w^L}\frac{\partial C_0}{\partial a^L}\dots (7.1)\\$
+As we take a derivative of each terms.
+$\\ \frac{\partial z^L}{\partial w^L}=a^{L-1} \dots (7.2)
+\\ \frac{\partial a^L}{\partial z^L}=\sigma^{'}(z^L) \dots (7.3)
+\\ \frac{\partial C_0}{\partial w^L} = 2(a^L - y) \dots (7.4)$
+\\As you see the term $,\frac{\partial z^L}{\partial w^L}=a^{L-1},$ partial derivative gives us the activated output neuron in the previous layer. This doesn't explain whole equations of backward propagation, but it gives us an idea how the backward propagation works.
 
 \subsubsection{Cross-entropy Cost function}
 As shown in the sigmoid \ref{sig}, if the neuron's output get close to 1, the curve gets flat, so $\sigma^{'}(z)$ get very small (slow down).
@@ -327,10 +333,9 @@ To avoid overfitting. Then save the hyper-parameters (\# of epochs, learning rat
 Repeating training by modifying the NN model and parameters until getting good accuracy.
 
 \subsubsection{Other NN model - Convolutional NN}
-another type of NN called Convolutional NN. $a^l=\sigma{(a^{l-1}*w+b)}$and $\ast$ is called a convolution operation.
 
-\includegraphics[scale=0.8]{img/con_eqn.png}
-
+Another type of NN called Convolutional NN. $a^l=\sigma{(a^{l-1}*w+b)}$and $\ast$ is called a convolution operation.
+\\Activation of CNN = $\sigma{(b+\sum_{l=0}^{n}\sum_{m=0}^{n}-w_{l,m}a_{j+l,k+l})} \dots  (125)\cite{NN}$
 \begin{figure}[H]
   \centering
   \begin{minipage}[b]{0.6\textwidth}
@@ -409,25 +414,10 @@ People found that networks based on rectified linear units consistently outperfo
 \caption{Model of Birdear}
 \label{mod}
 \end{figure}
-As shown in the figure \ref{mod}, the signal of bird chirpping goes into our the signal process. It ends up composing the MFCC, which is the input of NN. In the end, the NN distingusih what kind of bird is.
+As shown in the figure \ref{mod}, signals of bird chirpping go into our the signal process. It ends up composing the MFCC, which is the input of NN. In the end, the NN distingusih what kind of bird is.
 
 \subsection{Software Appication(PC) and Experiments}
 We chose Tensorflow for out neural network design because one you train up a model, you have the ability to convert it to a ``tflite" model which can be run on a microcontroller using tensorflow lite. We then built the model structure and trained the model. Our current model is shown in Figure \ref{model}, it has 128 input neurons on the input layer (for our 128 fft bins) 128 neurons on the one hidden layer and 1 neuron on the out (either crow or not crow). The script starts by randomly splitting our dataset into the training and validation set, where the training set it used for the training while the validation set is used for validation after the training is complete, that is to say the network has no knowledge of the validation set when adjusting the weights. After this process our network got \textbf{93\% accuracy on the validation set}
-
-\subsubsection{Testing codes(Python)}
-Following codes represent NN model that has a couple of CNN and a Max-pooling:
-\lstinputlisting[language=python]{../NN/audio/src/train.py}
-\hfill \break
-Another simple NN:
-\lstinputlisting[language=python]{../NN/audio/src/main.py}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.3]{../NN/audio/src/model.png}
-\caption{Current Model}
-\label{model}
-\end{figure}
-\newpage
 
 \section{Hardware}
 The first revision of the hardware is finished and we have connected to the microcontroller, we have blinked on of the LEDs but have not implemented any sampling or the neural network. The physical hardware is shown in Figure \ref{hardware} while the schematic is shown in Figure \ref{sch1} and \ref{sch2}. We got a PCB manufactued overseas ans placed all the SMD components onto it.
@@ -452,6 +442,14 @@ The first revision of the hardware is finished and we have connected to the micr
 \caption{Schematic - page 2}
 \label{sch2}
 \end{figure}
+
+\section{Conclusion}
+As mentioned in the section "Data Harvesting and Conditioning",
+we have gathered and labeled 589 crow samples, of which roughly half are not crows and 691 sanpiper samples to which roughly half are not sanpipers. Those samples are stored as WAV formats so that the modules of signal process can extract MFCC at the end of the process. Since MCU has a limited resources, it is necessary to compress digital data as much as possible. However, just compressing data into MCU is not our goal. The idea is how much signal data could be compressed without lossing discrete digital data in low frequency range. In other words, the compressed data still should represent the features of the original signal.\\
+Sound of birds' chirpping keeps changing abrumptly in a short time; therefore, it may not make so much sense to take FFT(Fast Fourier Transform) in the whole signal. In this case, STFT (Short time Fourier Transform) could be better solution. In addition, applying DCT(Discrete Cosine Transform) could help to decompose the overlapped signals from the STFT and compress data. The reason to come up with MFCC(Mel Frequency Cepstral Coefficients) is that first, it allows to shrink down the size of inputs. Second, it filters out signals in high frequency range, and focuses on the human perceivable hearing range (low frequency range). Our goal is not making some high quality audio sounds; rather, we are processing the signals such that NN can be discriminative enough between the birds' chirpping.Perhaps, the testing result of NN,around 93\%, still looks promissing with our testing samples; however, in order to solidify the model of NN, more diverse data could be required. The more varioud data we have, the better accuracy the NN performs. But, getting more data results in expensive cost since it takes a time and efforts.\\
+Unlike the other typical embedded system projects that are directly designed and implemented on MCU. Our project requires pre-steps before attacking MCU, which is to verify the model in the environments of PC. Although PCs and embedded systems are quite different in a matter of archetecture and resources, it seems to be inevitable to work on PC first. The reasons behind is that first, Machine Learing is still a new area for the embedded systems. Another reason is lots of resources of NN work based on PC, so without getting through the test based on PC, it is hard to estimate that the model of NN works on the embedded systems.\\
+From this project, we have been exposed ourselves to a new rising technical area, Neural Network, to see if it is possible to apply this to the embedded systems. Our answer for this is of course it is possible, and there seems to be area where electrical and electronics engineering could adapt the new rising technique such as signal process, power system, tele-communication, and so on. Moreover, we have learned techniques of the signal process that handle analogue to digital signals demanding compressing data for the embedded systems. 
+\newpage
 
 \section{Next Steps}
 The next steps of the project are...
@@ -535,9 +533,41 @@ April, 2016
 \bibitem{MF}
 Mel Frequency Cepstral Coefficient (MFCC) tutorial,
 James Lyons,
-\url{http://practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/},
-
+\url{http://practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/}
 
 \end{thebibliography}
+\newpage
+
+\appendix
+\section{Appendix A}
+\subsection{Testing NN codes(Python)}
+
+Following codes represent NN model that has a couple of CNN and a Max-pooling:
+\lstinputlisting[language=python]{../NN/audio/src/train.py}
+\hfill \break
+Another simple NN:
+\lstinputlisting[language=python]{../NN/audio/src/main.py}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{../NN/audio/src/model.png}
+\caption{Current Model}
+\label{model}
+\end{figure}
+\newpage
+\subsection{Testing Signal Process codes(Python)}
+Read .wav that recorded bird chirpping, then feed it into the signal process that outputs MFCC(Mel Frequency Cepstral Coefficients)
+
+\lstinputlisting[language=python]{../NN/data/SignalProcess/stft_mel.py}
+
+\section{Appendix B}
+\subsection{List of abbreviations and acronyms}
+
+STFT = Short Time Fourier Transform\\
+FFT = Fast Fourier Transform\\
+DCT = Discrete Cosine Transform\\
+MFCC = Mel Frequency Cepstral Coefficients\\
+MCU = Micro Controller\\
+PC = Personal Computer\\
 
 \end{document}

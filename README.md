@@ -1,5 +1,5 @@
-# FinalProject
-https://www.digikey.ca/short/pn872f
+# BirdEar
+Birdear is an open source hardware project that aims to build an open source embedded hardware device for classifying acoustic data.
 
 ## Repo Structure
 ```bash
@@ -11,20 +11,4 @@ https://www.digikey.ca/short/pn872f
 └── src       # Source code for the firmware
 ```
 
-## TODO: 
-  - Final gerber review.
-  ------------------------------------------------------------------------------- 
-  - Add way to power w/o battery 
-  - CHECK SD CARD CONNECTION.
-  - Add some text to the board.
-  - CHECK JTAG CONNECTION.
-  - Add mainline power switch to schematic
-  - Keystone 1042P (18650 Holder)
-  - The input to the comparator should be independent to the gain of the main amp 
-
-## Digikey order (Sans BOM) 
-  - 1550WM (Enclosure)
-  - Gore membrain (Add to order)
-  - Standoffs (Add to order)
-  - Mounting hardware
-  - Parts for the logicRusher (Led, lightpipe and PB)
+- Jin Seo / Ryan Walker

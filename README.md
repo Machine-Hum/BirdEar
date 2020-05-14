@@ -1,7 +1,11 @@
 # BirdEar
-Birdear is an open source hardware project that aims to build embedded hardware for classifying acoustic data. It uses and STM32 microcontoller, 18650 battery and nural network. It is designed to be inexpensive so several units can be placed affordabally.
+Birdear is an open source hardware project that aims to build embedded hardware for classifying acoustic data. It uses and STM32 microcontoller, 18650 battery and neural network. It is designed to be inexpensive so several units can be placed cheaply.
+
+It was also me and Jin's capstone project.
 
 ![](report/img/E04A0175.JPG)
+
+[Report here](report/paper.pdf)
 
 ## Repo Structure
 ```bash
